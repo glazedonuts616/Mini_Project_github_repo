@@ -1,0 +1,33 @@
+---
+- hosts: python_app
+  become: true
+  tasks:
+  # we need virtual environment for our flask app
+  - name: install virtual environment
+    package:
+      name: 
+        - python3-venv
+        - git
+      state: present
+  - name: Clone git repository
+    git:
+      repo: 'https://github.com/fullstackjava082023/simpleFlask.git'
+      dest: /opt/simpleFlask/
+      update: yes #pull even if the repo is already cloned
+      force: yes #force to update the repo
+  - name: create virtual environment
+    command: python3 -m venv /opt/simpleFlask/venv
+
+  - name: install requirements
+    pip:
+      name: flask
+      virtualenv: /opt/simpleFlask/venv
+  
+  - name: stop any process running on port 5000
+    shell: fuser -k 5000/tcp || true
+    ignore_errors: yes
+
+  - name: run flask app
+    shell: |
+      . /opt/simpleFlask/venv/bin/activate
+      nohup python3 /opt/simpleFlask/app.py > /opt/simpleFlask/app.log 2>&1 &

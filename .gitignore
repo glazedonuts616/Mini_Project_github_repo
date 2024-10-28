@@ -1,0 +1,46 @@
+# Ignore environment files that often contain sensitive info
+.env
+*.env
+
+# Ignore Terraform and Ansible variable files (adjust filenames as needed)
+terraform.tfvars
+vars.yml
+vars/*.yml
+ansible.cfg
+terraform/linode_terra/variables.tf
+terraform/github_terra/variables.tf
+ansible_play/vars/main.yaml
+terraform/linode_terra/linode_ip.txt
+terraform/linode_terra/generated_variables.tf
+
+# Ignore Ansible Vault files if you're using encryption for sensitive info
+*.vault.yml
+
+# Ignore personal SSH keys and private keys
+*.pem
+*.key
+
+# Ignore configuration files for cloud providers
+.aws/credentials
+.gcloud/
+.azure/
+
+# Ignore files that might contain tokens or passwords
+secrets.json
+config.json
+*.secret
+
+# Terraform directories
+**/.terraform/
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.backup
+
+# Ignore provider binaries
+terraform/github_terra/.terraform/providers/
+terraform/linode_terra/.terraform/providers/
+
+# Ignore sensitive Ansible variable files (adjust as needed)
+ansible_play/vars/main.yml
+
+
