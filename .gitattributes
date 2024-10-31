@@ -1,0 +1,5 @@
+# Set line endings to LF for YAML files and other text files
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
