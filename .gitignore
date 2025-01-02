@@ -44,3 +44,6 @@ terraform/linode_terra/.terraform/providers/
 ansible_play/vars/main.yml
 
 
+.gitattributes
+Mini_Project_Webhook/
+ansible_play/inventory/
